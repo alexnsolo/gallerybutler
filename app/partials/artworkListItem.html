@@ -1,0 +1,145 @@
+<div class="artwork-list-item">
+	<form role="form" name="artworkForm">
+		<div class="row">
+			<span class="col-sm-3">
+				<div class="form-group">
+					<input 
+						type="text"
+						class="form-control input-sm"
+						ng-model="editArtwork.artist"
+						placeholder="Artist">
+				</div>
+				<div class="form-group">
+					<input 
+						type="text"
+						class="form-control input-sm"
+						ng-model="editArtwork.title"
+						placeholder="Title">
+				</div>
+				<div class="form-group">
+					<input 
+						type="text"
+						class="form-control input-sm"
+						ng-model="editArtwork.year"
+						placeholder="Year">
+				</div>
+			</span>
+			<span class="col-sm-2">
+				<div class="form-group">
+					<select 
+						class="form-control input-sm" 
+						ng-model="editArtwork.medium" 
+						ng-options="medium.name for medium in mediums track by medium.url">
+					</select>
+				</div>
+				<div>
+					<div class="form-group">
+						<span class="well well-sm material-name" ng-repeat="material in editArtwork.materials track by $index">
+							<span>{{material.name}}</span>
+							<span class="close-button" ng-click="removeMaterial(material)">&times;</span>
+						</span>
+					</div>
+					<div class="form-group">
+						<input 
+							type="text" 
+							class="form-control input-sm" 
+							placeholder="Add material" 
+							ng-enter="addMaterial()"
+							ng-model="newMaterial.name">
+					</div>
+				</div>
+			</span>
+			<span class="col-sm-3 dimensions">
+				<input 
+					type="text"
+					class="form-control input-sm"
+					ng-model="editArtwork.dimension1"
+					placeholder="H">
+				<span>x</span>
+				<input 
+					type="text"
+					class="form-control input-sm"
+					ng-model="editArtwork.dimension2"
+					placeholder="W">
+				<span ng-if="editArtwork.medium.dimensions==3">x</span>	
+				<input 
+					type="text"
+					class="form-control input-sm"
+					ng-model="editArtwork.dimension3"
+					placeholder="D"
+					ng-if="editArtwork.medium.dimensions==3">
+				<select 
+					class="form-control input-sm" 
+					ng-model="editArtwork.dimensions_in_cm"
+					ng-options="unit.value as unit.name for unit in measuringUnits">
+				</select>
+			</span>
+			<span class="col-sm-2">
+				<div class="input-group input-group-sm">
+					<div class="input-group-addon">€</div>
+					<input 
+						type="text"
+						class="form-control input-sm"
+						ng-model="editArtwork.price"
+						placeholder="Price">
+				</div>
+				<div class="radio">
+					<label class="price-type-choice" data-ng-repeat="choice in priceTypes">
+						<input type="radio" ng-model="editArtwork.includes_vat" ng-value="choice.value" /> {{choice.name}} 
+					</label>
+				</div>	
+				<div class="form-group">
+					<div class="input-group input-group-sm">
+						<input 
+							type="text"
+							class="form-control input-sm"
+							ng-model="editArtwork.vat"
+							placeholder="VAT">
+						<div class="input-group-addon">%</div>
+					</div>
+				</div>	
+			</span>
+			<span class="col-sm-2 artwork-actions">
+				<button 
+					type="button"
+					class="btn btn-sm btn-danger"
+					ng-show="!artworkForm.$dirty && !createMode"
+					ng-click="deleteArtwork()">
+					Delete artwork
+				</button>
+				<button 
+					type="button"
+					class="btn btn-sm btn-warning"
+					ng-show="createMode"
+					ng-click="discardDraft()">
+					Discard Draft
+				</button>
+				<button 
+					type="button"
+					class="btn btn-sm btn-warning"
+					ng-show="artworkForm.$dirty && !createMode"
+					ng-click="discardChanges()">
+					Discard Changes
+				</button>
+				<button 
+					type="button"
+					class="btn btn-sm btn-success"
+					ng-show="artworkForm.$dirty"
+					ng-enabled="artworkForm.$valid"
+					ng-click="saveChanges()">
+					Save Changes
+				</button>
+			</span>
+		</div>	
+		<div>
+			<button class="btn btn-default btn-sm" ng-click="showDetails = !showDetails">{{showDetails ? 'Less' : 'More'}}</button>
+			<textarea 
+				class="form-control"
+				ng-show="showDetails"
+				ng-model="editArtwork.description"
+				placeholder="Description"
+				rows="5">
+			</textarea>	
+		</div>
+	</form>
+</div>

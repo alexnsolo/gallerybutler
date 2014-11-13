@@ -11,7 +11,7 @@
 				Create Artwork
 			</button>
 		</div>
-		<div class="artwork-manager">
+		<div class="artwork-manager jumbotron">
 			<div class="row artwork-header">
 			    <span class="col-sm-3">Artist &Title & Date</span>
 			    <span class="col-sm-2">Medium & Material</span>
@@ -29,7 +29,8 @@
 				artwork="artwork"
 				create-mode="false">
 			</artwork-list-item>
+			<div ng-show="searchInput && (artworks | filter:searchInput).length==0" class="text-center">No results.</div>
 		</div>
 	</div>
-	<div ng-show="isLoading">Loading...</div>
+	<div ng-show="isLoading" class="text-center">Loading...</div>
 </div>

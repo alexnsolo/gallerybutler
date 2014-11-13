@@ -1,8 +1,16 @@
 {
   "name": "gallerybutler",
-  "version": "0.0.0",
-  "dependencies": {},
-  "devDependencies": {
+  "version": "0.0.1",
+  "repository": "https://github.com/civilframe/gallerybutler.git",
+  "author": "Alex Solo <alex.n.solo@gmail.com>",
+  "scripts": {
+    "start": "gulp build && node server"
+  },
+  "dependencies": {
+    "express": "^4.10.2",
+    "method-override": "^2.3.0",
+    "errorhandler": "^1.2.2",
+    "body-parser": "^1.9.2",
     "gulp": "^3.8.0",
     "gulp-autoprefixer": "^0.0.6",
     "gulp-cache": "^0.2.0",
@@ -10,7 +18,6 @@
     "gulp-csso": "^0.2.6",
     "gulp-filter": "^1.0.0",
     "gulp-flatten": "^0.0.2",
-    "gulp-imagemin": "^1.0.0",
     "gulp-jshint": "^1.8.0",
     "gulp-load-plugins": "^0.6.0",
     "gulp-size": "^1.1.0",

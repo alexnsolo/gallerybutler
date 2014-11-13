@@ -3,7 +3,7 @@
 angular.module('gallerybutler').directive('artworkManager', function($q, Artworks, Materials, Mediums) {
 	return {
 		restrict: 'E',
-		templateUrl: 'templates/artworkManager.html',
+		templateUrl: 'partials/artworkManager.html',
 		controller: function($scope) {
 			$scope.drafts = [];
 			$scope.isLoading = true;

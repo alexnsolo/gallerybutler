@@ -1,3 +1,7 @@
+html {
+    overflow-y: scroll;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -29,10 +33,15 @@
     }
   }
 
+  .artwork-list-item:nth-child(odd)  {
+    background-color: white;
+  }
+
   .artwork-list-item {
-    > hr {
-      margin-top: 5px;
-    }
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-left: 20px;
 
     .dimensions {
       > * {
@@ -69,3 +78,6 @@
   }
 }
 
+select.input-sm, select.form-group-sm .form-control {
+  line-height: 16px;
+}

@@ -3,7 +3,7 @@
 angular.module('gallerybutler').directive('artworkListItem', function($http, Artworks, Mediums, Materials) {
 	return {
 		restrict: 'E',
-		templateUrl: 'templates/artworkListItem.html',
+		templateUrl: 'partials/artworkListItem.html',
 		replace: true,
 		scope: {
 			artwork: '=',
@@ -22,6 +22,7 @@ angular.module('gallerybutler').directive('artworkListItem', function($http, Art
 			];
 			$scope.materialsAdded = [];
 			$scope.materialsDeleted = [];
+			$scope.showDetails = false;
 
 			function loadArtwork() {
 				$scope.editArtwork = angular.copy($scope.artwork);
@@ -29,7 +30,7 @@ angular.module('gallerybutler').directive('artworkListItem', function($http, Art
 				$scope.editArtwork.materials = [];
 
 				$http.get($scope.artwork.materials).success(function(data) {
-					if (!data) { 
+					if (!data || !data.urls) { 
 						return;
 					}
 					data.urls.forEach(function(url) {
