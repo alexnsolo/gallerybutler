@@ -1,0 +1,35 @@
+<div class="artwork-manager">
+	<div ng-hide="isLoading">
+		<div class="header clearfix">
+			<input 
+				class="form-control pull-left search-box"
+				placeholder="Search artworks"
+				ng-model="searchInput">
+			<button 
+				class="btn btn-success pull-right"
+				ng-click="createArtwork()">
+				Create Artwork
+			</button>
+		</div>
+		<div class="artwork-manager">
+			<div class="row artwork-header">
+			    <span class="col-sm-3">Artist &Title & Date</span>
+			    <span class="col-sm-2">Medium & Material</span>
+			    <span class="col-sm-3">Dimensions & Color</span>
+			    <span class="col-sm-2">Price</span>
+			    <span class="col-sm-2">&nbsp;</span>
+			</div>
+			<artwork-list-item 
+				ng-repeat="artwork in drafts" 
+				artwork="artwork"
+				create-mode="true">
+			</artwork-list-item>
+			<artwork-list-item 
+				ng-repeat="artwork in artworks | filter:searchInput" 
+				artwork="artwork"
+				create-mode="false">
+			</artwork-list-item>
+		</div>
+	</div>
+	<div ng-show="isLoading">Loading...</div>
+</div>
