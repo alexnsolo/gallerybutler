@@ -20,6 +20,8 @@
   "white": true,
   "validthis": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "_": false,
+    "window": false
   }
 }
